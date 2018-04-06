@@ -1,4 +1,4 @@
-program load;
+unit load;
 
 {
 	Cek testing :
@@ -10,6 +10,8 @@ program load;
 	6. Simulasi : Success;
 }
  
+interface
+
 type
 	tanggal = record
 		hari: integer;
@@ -76,8 +78,13 @@ type
 var
 	dataPusat: dataUtama;
 	j,i: integer;
- 
- 
+
+function stringToInt(value: string): integer;
+procedure date(value: string;var option: tanggal);
+function getData(var value: string): string;
+procedure loading();
+implementation
+
 function stringToInt(value: string): integer;
 var error: integer;
 begin
@@ -103,7 +110,7 @@ begin
 	value := copy(value, (pos(' | ', value) + 3), length(value));
 end;
  
-procedure load();
+procedure loading();
 var
 	data, temp: string;
 	seq, i: integer;
@@ -178,7 +185,7 @@ begin
 		dataPusat.simulasi[seq].totalPendapatan := stringToInt(getData(data));
 	end;
 end;
- 
+
 begin
-	load();
+
 end.
